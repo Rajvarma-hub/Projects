@@ -6,7 +6,7 @@ from email.message import EmailMessage
 
 load_dotenv()
 def send_email_alert(message,emotion,risk):
-    password=st.screts['password']
+    password = st.secrets['password']
     msg=EmailMessage()
     msg['Subject']='Customer Frustration Alert'
     msg['From']='learnershub124@gmail.com'
