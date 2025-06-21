@@ -1,11 +1,12 @@
 import smtplib
 import os
+import streamlit as st
 from dotenv import load_dotenv
 from email.message import EmailMessage
 
 load_dotenv()
 def send_email_alert(message,emotion,risk):
-    password=os.getenv('password')
+    password=st.screts['password']
     msg=EmailMessage()
     msg['Subject']='Customer Frustration Alert'
     msg['From']='learnershub124@gmail.com'
@@ -18,6 +19,7 @@ def send_email_alert(message,emotion,risk):
                     
                     Action Recommended: Escalate immediately.
                     """)
+                    
     with smtplib.SMTP('smtp.gmail.com',587) as stmp:
         stmp.starttls()
         stmp.login('learnershub124@gmail.com',password)
