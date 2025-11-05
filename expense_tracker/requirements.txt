@@ -4,7 +4,7 @@ uvicorn==0.38.0
 SQLAlchemy==2.0.44
 sqlmodel==0.0.18
 psycopg==3.2.12
-psycopg2-binary==3.2.11
+psycopg2-binary==2.9.11
 aiosqlite==0.21.0
 
 python-dotenv==1.2.1
@@ -20,3 +20,4 @@ langgraph==1.0.2
 
 httpx==0.28.1
 requests==2.32.5
+
