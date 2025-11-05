@@ -28,7 +28,10 @@ def get_current_user(token: str = Depends(oauth_scheme), db: Session = Depends(g
         raise HTTPException(status_code=401, detail="Unauthorized")
 
     return user.id
-
+@app.get("/")
+def welcome():
+    return "Welcome User"
+    
 @app.post("/token")
 def login(form: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     email = form.username   
@@ -144,4 +147,5 @@ async def Aichat(req: chat, user_id: int = Depends(get_current_user)):
     elif isinstance(result, dict) and "output" in result:
         return {"response": result["output"]}
         
+
     return {"response": f"An unknown error occurred. Raw output structure mismatch."}
