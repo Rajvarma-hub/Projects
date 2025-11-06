@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException, Depends, status
 from sqlalchemy.orm import Session
 from sqlalchemy import and_,or_
+from fastapi.middleware.cors import CORSMiddleware
 from langchain_core.messages import HumanMessage
 from jose import JWTError,jwt
 from database import get_db, User, Expenses, UserCreate,chat, AddExpense, ExpenseOut, Base, engine,update_expenses,Messages,Delete_Multiple,RegisterStep1,RegisterStep2
@@ -9,10 +10,10 @@ from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 
 
 Base.metadata.create_all(bind=engine)
-
+orging=["*"]
 oauth_scheme = OAuth2PasswordBearer(tokenUrl="token")
 app = FastAPI(title="Expense Tracker")
-
+app.add_middleware(CORSMiddleware,allow_origins=orging,allow_credentials=True,allow_methods=["*"],allow_headers=["*"])
 
 def get_current_user(token: str = Depends(oauth_scheme), db: Session = Depends(get_db)):
     try:
@@ -149,3 +150,4 @@ async def Aichat(req: chat, user_id: int = Depends(get_current_user)):
         
 
     return {"response": f"An unknown error occurred. Raw output structure mismatch."}
+
