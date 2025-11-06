@@ -1,3 +1,4 @@
+#fastapi
 fastapi==0.121.0
 uvicorn[standard]
 
@@ -20,6 +21,7 @@ langgraph==1.0.2
 
 httpx==0.28.1
 requests==2.32.5
+
 
 
 
