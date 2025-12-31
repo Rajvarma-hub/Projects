@@ -1,51 +1,116 @@
-# 🛡️ EmotiGuard: Real-Time Customer Frustration Detector
+# 🧠 EmotionGuard – Real-Time Customer Frustration Detection System
 
-**EmotiGuard** is a real-time AI-powered application that detects **customer frustration** in support chats using emotion analysis. It uses **Hugging Face’s serverless Inference API** to analyze emotions and automatically sends alerts for critical cases (like *anger*), helping support teams act quickly and prevent customer churn.
+EmotionGuard is a real-time AI-powered application that analyzes customer messages to detect emotional sentiment, assess escalation risk, and automatically alert support teams when critical intervention is required.
+
+The system helps businesses reduce customer churn, improve support response time, and proactively manage high-risk customer interactions.
 
 ---
 
 ## 🚀 Features
 
-- 🔍 Real-time **Emotion Detection** using Hugging Face's Inference API
-- 📈 Risk-based alert system using custom emotion-to-risk mapping
-- 📧 **Email Alert System** for high-risk messages (e.g., anger)
-- 🧠 Built using **serverless inference** (no model training or hosting needed)
-- 🖥️ Clean user interface using **Streamlit**
+- 🔍 Real-time emotion detection using NLP
+- 📊 Confidence scoring for emotional intensity
+- ⚠️ Risk-based escalation logic
+- 📧 Automated email alerts for high-risk messages
+- 🧠 Serverless inference (no model training or hosting)
+- 🖥️ Interactive Streamlit dashboard
 
 ---
 
-## 💡 How It Works
+## 🧠 How It Works
 
-1. User enters a customer message.
-2. Message is sent to Hugging Face's `j-hartmann/emotion-english-distilroberta-base` via the `InferenceClient`.
-3. The app extracts the most probable emotion.
-4. If the emotion is high-risk (e.g., `anger`, `disgust`), it triggers an **email alert** to the support lead.
+1. User enters a customer message in the Streamlit UI  
+2. The message is sent to Hugging Face’s serverless Inference API  
+3. The most probable emotion and confidence score are extracted  
+4. A risk score is calculated using custom emotion-to-risk mapping  
+5. High-risk emotions automatically trigger an email alert  
+
+---
+
+## 🧩 System Architecture
+
+Customer Message  
+→ Emotion Detection (Hugging Face Inference API)  
+→ Emotion Label + Confidence Score  
+→ Risk Scoring Engine  
+→ Low / Medium / High Risk Classification  
+→ Email Escalation (High Risk)
 
 ---
 
 ## 🧠 Emotion-to-Risk Mapping
 
 | Emotion   | Risk Score |
-|-----------|------------|
-| Anger     | 5          |
-| Disgust   | 4          |
-| Fear      | 3          |
-| Sadness   | 3          |
-| Joy       | 1          |
-| Love      | 0          |
+|---------|------------|
+| Anger   | 5 |
+| Disgust | 4 |
+| Fear    | 3 |
+| Sadness | 3 |
+| Joy     | 1 |
+| Love    | 0 |
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Component       | Tool / Library                         |
-|------------------|-----------------------------------------|
-| Emotion Analysis | Hugging Face `InferenceClient` (Cloud) |
-| Model Used       | `j-hartmann/emotion-english-distilroberta-base` |
-| Frontend         | Streamlit                              |
-| Email Alerts     | Python `smtplib`, `email.message`, `dotenv` |
+- **Language:** Python  
+- **Frontend:** Streamlit  
+- **Emotion Analysis:** Hugging Face Inference API  
+- **Model Used:** `j-hartmann/emotion-english-distilroberta-base`  
+- **Backend Logic:** Custom risk scoring engine  
+- **Email Alerts:** `smtplib`, `email.message`, `dotenv`
 
 ---
 
-## 📦 Project Structure
+## ▶️ How to Run Locally
 
+### 1️⃣ Clone the repository
+ bash
+git clone  https://github.com/Rajvarma-hub/Projects/edit/main/emotion_detection
+cd EmotionGuard
+
+2️⃣ Install dependencies
+pip install -r requirements.txt
+
+3️⃣ Run the application
+streamlit run app.py
+
+📁 Project Structure
+EmotionGuard/
+├── app.py                 # Streamlit application
+├── emotion_model.py       # Emotion detection logic
+├── risk_scoring.py        # Emotion-to-risk mapping
+├── email_alert.py         # Email notification module
+├── requirements.txt
+└── README.md
+
+💡 Use Cases
+
+Customer support escalation systems
+
+Call center monitoring tools
+
+SaaS customer retention platforms
+
+AI-powered CRM enhancements
+
+🔮 Future Enhancements
+
+Emotion trend analysis across conversations
+
+CRM integrations (Zendesk, Freshdesk, Salesforce)
+
+Multilingual emotion detection
+
+REST API & webhook support
+
+Dashboard analytics for support teams
+
+👤 Author
+
+Raj
+AI Engineer | Backend Developer
+
+GitHub: https://github.com/Rajvarma-hub
+
+LinkedIn: https://linkedin.com/in/your-profile
